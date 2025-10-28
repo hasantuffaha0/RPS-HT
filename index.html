@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    <title>🪨📄✂️ RPS-HT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="hone">
+        <h1>🪨📄✂️ RPS-HT</h1>
+    </div>
+    <div class="buttons">
+        <button class="rock button" onclick="
+            playerMove = '🪨';
+            pickComputerMove();
+            f_result();
+        ">🪨<br>Rock</button>
+        <button class="paper button" onclick="
+            playerMove = '📄';
+            pickComputerMove();
+            f_result();
+        ">📄<br>Paper</button>
+        <button class="scissors button" onclick="
+            playerMove = '✂️';
+            pickComputerMove();
+            f_result();
+        ">✂️<br>Scissors</button>
+    </div>
+    <div class="show-result">
+        <div id="showresult">Result</div>
+    </div>
+    <div class="computerbutton">
+        <button class="computer-move button">
+            <p id="move-emoji"></p><br>
+            <p id="move-name"></p>
+        </button>
+    </div>
+    <div class="show-score">
+        <div id="showscore">
+            Score
+        </div>
+        <button onclick="
+            score.losses = 0;
+            score.wins = 0;
+            score.ties = 0;
+            document.getElementById('showscore').innerText = 'Score';
+            document.getElementById('showresult').innerText = 'Result';
+            document.getElementById('move-emoji').innerText = '';
+            document.getElementById('move-name').innerText = '';
+        ">🔄</button>
+    </div>
+    <footer class="footer" role="contentinfo" aria-label="حقوق الملكية لِ RPS-HT">
+        <div class="meta">
+            <div class="title">RPS-HT — © 2025 Hassan Tuffaha</div>
+
+            <div class="copyright">
+                © 2025 <strong>Hassan Tuffaha</strong>. All Rights Reserved.<br />
+                <em>RPS-HT is an original game created by Hasan Tuffaha.</em>
+            </div>
+            <div class="small">تم تطويرها وتصميمها بواسطة المبرمج حسن تفاحة — كل الحقوق محفوظة.</div>
+        </div>
+    </footer>
+    <script>
+        let ComputerMove = "";
+        let playerMove = "";
+        let result = "";
+
+        const score = {
+            wins: 0,
+            ties: 0,
+            losses: 0
+        };
+
+        function pickComputerMove() {
+            const randomMove = Math.random();
+            if (randomMove >= 0 && randomMove < (1 / 3)) {
+                ComputerMove = '🪨';
+            }
+            else if (randomMove >= (1 / 3) && randomMove < (2 / 3)) {
+                ComputerMove = '📄';
+            }
+            else if (randomMove >= (2 / 3) && randomMove <= 1) {
+                ComputerMove = '✂️';
+            }
+
+            if (ComputerMove === '🪨') {
+                document.getElementById('move-emoji').innerText = '🪨';
+                document.getElementById('move-name').innerText = 'Rock';
+            }
+            else if (ComputerMove === '📄') {
+                document.getElementById('move-emoji').innerText = '📄';
+                document.getElementById('move-name').innerText = 'Paper';
+            }
+            else if (ComputerMove === '✂️') {
+                document.getElementById('move-emoji').innerText = '✂️';
+                document.getElementById('move-name').innerText = 'Scissors';
+            }
+            return ComputerMove;
+        }
+
+        function f_result() {
+            if (playerMove === ComputerMove) {
+                result = 'Tie';
+                score.ties++;
+            }
+            else if (playerMove === '🪨' && ComputerMove === '✂️'
+                || playerMove === '📄' && ComputerMove === '🪨'
+                || playerMove === '✂️' && ComputerMove === '📄') {
+                result = 'You win';
+                score.wins++;
+            }
+            else {
+                result = 'You lose';
+                score.losses++;
+            }
+            document.getElementById('showresult').innerText = `${result}`;
+            document.getElementById('showscore').innerText = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+        }
+
+    </script>
+</body>
+
+</html>

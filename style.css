@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /*body*/
+    --GRID-COLUMN: repeat(9, 1fr);
+    --GRID-TEMPLATE:
+        "h1 h1 h1 h1 h1 h1 h1 h1 h1"
+        "bs bs bs bs bs bs bs bs bs"
+        "sr sr sr sr sr sr sr sr sr"
+        "cm cm cm cm cm cm cm cm cm"
+        "sc sc sc sc sc sc sc sc sc"
+        "fo fo fo fo fo fo fo fo fo";
+    --BBGCOLOR: linear-gradient(180deg, #74C0FC, #FF6B6B);
+    --BCOLOR: #222;
+    --BGAP: 1rem;
+    /*hone*/
+    --H1BGCOLOR: #FF6B6B;
+    --H1COLOR: #fff;
+    --H1POSITION: fixed;
+    --H1FONT-SIZE: 1rem;
+    /* buttons */
+    --FLEX-DIR-BUTTONS: row;
+    --GAP-BUTOONS: 0rem;
+    --FLEX-WRAP: nowrap;
+    /* button */
+    /* computer-move */
+    /* button:not(.computer-move) */
+    /* button:not(.computer-move):hover */
+    /* show-result */
+    /* showresult */
+    /* computerbutton */
+    /* show-score */
+    --LEFT-SHOW-PADDING: 80px;
+    /* show-score button */
+    /* showscore */
+    --FONT-SIZESCORE: 2rem;
+    /* footer */
+    --FOOTER-COLOR: #fff;
+}
+
+body {
+    display: grid;
+    grid-template-columns: var(--GRID-COLUMN);
+    grid-template-areas: var(--GRID-TEMPLATE);
+    min-height: 100vh;
+    gap: var(--BGAP);
+    background: var(--BBGCOLOR);
+    color: var(--BCOLOR);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hone {
+    grid-area: h1;
+    text-align: center;
+    position: var(--H1POSITION);
+    width: 100%;
+    z-index: 1;
+    background-color: var(--H1BGCOLOR);
+    color: var(--H1COLOR);
+    padding: 0.5rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.buttons {
+    grid-area: bs;
+    justify-content: space-around;
+    margin-top: 3rem;
+    flex-direction: var(--FLEX-DIR-BUTTONS);
+    gap: var(--GAP-BUTOONS);
+    flex-wrap: var(--FLEX-WRAP);
+}
+
+.button {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+    background: radial-gradient(#51CF66, transparent);
+}
+
+.computer-move {
+    width: 50%;
+    height: 200px;
+    border-radius: 20px;
+    border: none;
+}
+
+.button:not(.computer-move) {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    color: #fff;
+    transition: all .3s ease-in-out;
+}
+
+.button:not(.computer-move):hover {
+    filter: brightness(105%);
+    transform: scale(1.07) rotate(5deg);
+    box-shadow: 0 0 25px #00DFA2, 0 0 50px #00DFA2 inset;
+}
+
+.show-result {
+    grid-area: sr;
+    width: 100%;
+    margin: .7rem 0;
+}
+
+#showresult {
+    width: 50%;
+    border-radius: 20px;
+    font-size: 3rem;
+    color: #222;
+    font-weight: bold;
+}
+
+.computerbutton {
+    grid-area: cm;
+}
+
+.show-score {
+    grid-area: sc;
+    width: 100%;
+    margin: 1rem 0rem;
+    padding-left: var(--LEFT-SHOW-PADDING);
+}
+
+.show-score button {
+    border: none;
+    width: 70px;
+    border-radius: 20px;
+    margin-left: 10px;
+    font-size: 2rem;
+    transition: all .3s ease-in-out;
+}
+
+.show-score button:hover {
+    box-shadow: 0 0 25px #00DFA2, 0 0 50px #00DFA2 inset;
+    transform: scale(1.1) rotate(3deg);
+    filter: brightness(110%);
+}
+
+#showscore {
+    width: 70%;
+    border-radius: 20px;
+    justify-content: center;
+    font-size: var(--FONT-SIZESCORE);
+    flex-direction: column;
+    color: #222;
+    flex-wrap: nowrap;
+}
+
+#showresult,
+.show-score button,
+#showscore {
+    background: radial-gradient(#FFD43B, transparent);
+}
+
+.footer {
+    grid-area: fo;
+    text-align: center;
+    color: var(--FOOTER-COLOR);
+    font-weight: bold;
+}
+
+.show-result,
+#showresult,
+.show-score,
+.show-score button,
+#showscore {
+    height: 90px;
+}
+
+.buttons,
+.show-result,
+#showresult,
+.computerbutton,
+.show-score,
+#showscore,
+.footer {
+    display: flex;
+    align-items: center;
+}
+
+.show-result,
+#showresult,
+.computerbutton,
+.show-score,
+#showscore,
+.footer {
+    justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --BBGCOLOR: linear-gradient(180deg, #001F3F, #1B263B);
+        --BCOLOR: #F6FA70;
+        --H1BGCOLOR: #1E6091;
+        --H1COLOR: #F6FA70;
+        --FOOTER-COLOR: #F6FA70;
+    }
+
+    .button:not(.computer-move),
+    .computer-move,
+    #showresult,
+    #showscore,
+    .show-score button {
+        background: radial-gradient(#38BDF8, transparent);
+        color: #F6FA70;
+        border-color: #F6FA70;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --GRID-TEMPLATE:
+            "h1"
+            "bs"
+            "sr"
+            "cm"
+            "sc"
+            "fo";
+        --GRID-COLUMN: 1fr;
+        --BGAP: .5rem;
+        --H1POSITION: static;
+        --H1FONT-SIZE: 1.2rem;
+        --FONT-SIZESCORE: 1rem;
+        --FLEX-DIR-BUTTONS: column;
+        --GAP-BUTOONS: 1rem;
+        --LEFT-SHOW-PADDING: 0px;
+    }
+
+    .button,
+    .computer-move {
+        width: 200px;
+        height: 200px;
+        font-size: 1.5rem;
+    }
+
+    #showresult,
+    #showscore,
+    .show-score button {
+        width: 90%;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    :root {
+        --GAP-BUTOONS: 1rem;
+        --FLEX-WRAP: wrap;
+        --LEFT-SHOW-PADDING: 0px;
+    }
+
+    .button,
+    .computer-move {
+        width: 200px;
+        height: 200px;
+    }
+
+    #showresult,
+    #showscore {
+        width: 70%;
+        font-size: 2rem;
+    }
+
+    .show-score button {
+        width: 60px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    :root {
+        --LEFT-SHOW-PADDING: 0px;
+    }
+
+    .button,
+    .computer-move {
+        width: 200px;
+        height: 200px;
+    }
+
+    #showresult,
+    #showscore {
+        width: 60%;
+        font-size: 2.5rem;
+    }
+}
