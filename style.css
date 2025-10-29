@@ -14,12 +14,13 @@
         "cm cm cm cm cm cm cm cm cm"
         "sc sc sc sc sc sc sc sc sc"
         "fo fo fo fo fo fo fo fo fo";
-    --BBGCOLOR: linear-gradient(180deg, #74C0FC, #FF6B6B);
-    --BCOLOR: #222;
     --BGAP: 1rem;
+    --BBGCOLOR: linear-gradient(180deg, #001F3F, #1B263B);
+    --BCOLOR: #F6FA70;
+    --H1BGCOLOR: #1E6091;
+    --H1COLOR: #F6FA70;
+    --FOOTER-COLOR: #F6FA70;
     /*hone*/
-    --H1BGCOLOR: #FF6B6B;
-    --H1COLOR: #fff;
     --H1POSITION: fixed;
     --H1FONT-SIZE: 1rem;
     /* buttons */
@@ -39,7 +40,6 @@
     /* showscore */
     --FONT-SIZESCORE: 2rem;
     /* footer */
-    --FOOTER-COLOR: #fff;
 }
 
 body {
@@ -87,14 +87,18 @@ body {
     height: 200px;
     border-radius: 20px;
     border: none;
+    background: radial-gradient(#38BDF8, transparent);
+    color: #F6FA70;
+    border-color: #F6FA70;
 }
 
 .button:not(.computer-move) {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 5px solid #fff;
-    color: #fff;
+    border: 5px solid #F6FA70;
+    background: radial-gradient(#38BDF8, transparent);
+    color: #F6FA70;
     transition: all .3s ease-in-out;
 }
 
@@ -150,14 +154,15 @@ body {
     justify-content: center;
     font-size: var(--FONT-SIZESCORE);
     flex-direction: column;
-    color: #222;
     flex-wrap: nowrap;
 }
 
 #showresult,
 .show-score button,
 #showscore {
-    background: radial-gradient(#FFD43B, transparent);
+    background: radial-gradient(#38BDF8, transparent);
+    color: #F6FA70;
+    border-color: #F6FA70;
 }
 
 .footer {
@@ -193,26 +198,6 @@ body {
 #showscore,
 .footer {
     justify-content: center;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --BBGCOLOR: linear-gradient(180deg, #001F3F, #1B263B);
-        --BCOLOR: #F6FA70;
-        --H1BGCOLOR: #1E6091;
-        --H1COLOR: #F6FA70;
-        --FOOTER-COLOR: #F6FA70;
-    }
-
-    .button:not(.computer-move),
-    .computer-move,
-    #showresult,
-    #showscore,
-    .show-score button {
-        background: radial-gradient(#38BDF8, transparent);
-        color: #F6FA70;
-        border-color: #F6FA70;
-    }
 }
 
 @media (max-width: 600px) {
